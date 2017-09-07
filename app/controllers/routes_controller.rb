@@ -1,10 +1,8 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:show]
-
-  # GET /routes/1
+  # GET /routes
   def show
     if params.has_key?(:passphrase) && params.has_key?(:source)
-      @route = Route.find(passphrase: params[:passphrase], source: params[:source])
+      @route = Route.find_by(passphrase: params[:passphrase], source: params[:source])
       render json: @route
     else
       render json: nil, status: :bad_request
@@ -16,7 +14,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      render json: @route, status: :created, location: @route
+      render json: @route, status: :created
     else
       render json: @route.errors, status: :unprocessable_entity
     end
