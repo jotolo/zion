@@ -1,3 +1,5 @@
+#require 'spec/factory_helper'
+
 FactoryGirl.define do
   factory :route do
     sequence :passphrase do |n|
@@ -24,12 +26,5 @@ FactoryGirl.define do
       rand_time(start_time, Time.now + n.days)
     end
 
-    def rand_time(from, to=Time.now)
-      Time.at(rand_in_range(from.to_f, to.to_f))
-    end
-
-    def rand_in_range(from, to)
-      rand * (to - from) + from
-    end
   end
 end
