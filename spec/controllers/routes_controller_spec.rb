@@ -62,7 +62,7 @@ RSpec.describe RoutesController, type: :controller do
     context 'with valid params' do
       it 'creates a new Route' do
         expect {
-          post :create, params: {route: valid_attributes}, session: valid_session
+          post :create, params: valid_attributes, session: valid_session
         }.to change(Route, :count).by(1)
       end
     end
