@@ -23,6 +23,8 @@ class RoutesController < ApplicationController
   private
   # Only allow a trusted parameter "white list" through.
   def route_params
-    params.require(:route).permit(:passphrase, :source, :start_node, :end_node, :start_time, :end_time)
+    # The line below was modified because of specification of the challenge
+    # params.require(:route).permit(:passphrase, :source, :start_node, :end_node, :start_time, :end_time)
+    params.permit(:passphrase, :source, :start_node, :end_node, :start_time, :end_time)
   end
 end
